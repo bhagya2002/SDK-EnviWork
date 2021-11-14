@@ -58,3 +58,18 @@ def delete_notes():
 
 @routes.route('/add-points', methods=['POST'])
 def add_points():
+    print("add_points called")
+    # takes json data form the request.data (note to be deleted)
+    note = json.loads(request.data)
+    noteId = note['noteId']  # noteId is the id of the note to be deleted
+    note = Note.query.get(noteId)  # check if note exists
+    
+    # if note exisits and made by the user who created the note, delete it
+    if note:
+        if note.user_id == current_user.id:
+            current_user.total_points += 1
+            db.session.delete(note)
+            db.session.commit()
+            flash('Note deleted.', 'success')
+            
+    return jsonify({})  # return empty json objec

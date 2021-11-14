@@ -1,18 +1,17 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 <h1 align="center">Notes</h1>
+<p align="right">Tasks completed: {{ user.total_points }}</p>  <!--change to add points when fixed-->
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <li class="list-group-item">
 
     <div style="float:left;">{{ note.data }}</div>
 
-    <div class="info-text">Points: {{ note.points }} // Complete: {{ note.complete }}</div>
-
     {% if note.complete %}
-      <input type="checkbox" class="note-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
+      <input style = "left-align" type="checkbox" class="note-complete" onClick="addPoints({{ note.id }})">  <!--change this to completed with points -->
     {% else %}
-      <input type="checkbox" class="note-not-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
+      <input type="checkbox" class="note-not-complete" onClick="addPoints({{ note.id }})">  
     {% endif %}
 
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">

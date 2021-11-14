@@ -19,4 +19,5 @@ class User(db.Model, UserMixin): # create a new class to inherit from the UserMi
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note') # create a relationship between the user and the note table
     user_state = db.Column(db.String(150))
+    total_points = db.Column(db.Integer)
     
