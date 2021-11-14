@@ -1,10 +1,17 @@
 function deleteNote(noteId) {
-  // calls the delete note endpoint
-  fetch("/delete-note", {
+  fetch("/delete-notes", {
     method: "POST",
     body: JSON.stringify({ noteId: noteId }),
   }).then((_res) => {
-    // reloads the page data
+    window.location.href = "/";
+  });
+}
+
+function addPoints(noteId) {
+  fetch("/add-points", {
+    method: "POST",
+    body: JSON.stringify({ noteId: noteId }),
+  }).then((_res) => {
     window.location.href = "/";
   });
 }

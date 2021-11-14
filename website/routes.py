@@ -13,14 +13,16 @@ routes = Blueprint('routes', __name__)
 @login_required
 def home():
     if current_user.user_state == 'new':
-        new_note = Note(data="How are you doing?", user_id=current_user.id)
+        new_note = Note(data="Walk, bike, or take the bus somewhere instead of driving", user_id=current_user.id)
         db.session.add(new_note)
-        new_note = Note(data="How are you doing today?", user_id=current_user.id)
+        new_note = Note(data="Make sure all recyclables for the day go in the recycling", user_id=current_user.id)
         db.session.add(new_note)
-        new_note = Note(data="How were you doing yesterday?", user_id=current_user.id)
+        new_note = Note(data="Pick up litter", user_id=current_user.id)
         db.session.add(new_note)
-        new_note = Note(data="Day before?", user_id=current_user.id)
+        new_note = Note(data="Make sure all lights and energy-using devices (within reason) are off before you go to sleep", user_id=current_user.id)
         db.session.add(new_note)
+        db.session.commit()
+        current_user.user_state = 'old'
         db.session.commit()
     
     if request.method == 'POST':
@@ -39,8 +41,9 @@ def home():
 
 @routes.route('/delete-notes', methods=['POST'])
 def delete_notes():
+    print("delete_notes called")
     # takes json data form the request.data (note to be deleted)
-    note = json.load(request.data)
+    note = json.loads(request.data)
     noteId = note['noteId']  # noteId is the id of the note to be deleted
     note = Note.query.get(noteId)  # check if note exists
     
@@ -52,3 +55,6 @@ def delete_notes():
             flash('Note deleted.', 'success')
     
     return jsonify({})  # return empty json object
+
+@routes.route('/add-points', methods=['POST'])
+def add_points():

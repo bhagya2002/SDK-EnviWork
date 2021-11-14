@@ -9,7 +9,7 @@ class Note(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key to user table to get the user id of who made the note
     points = db.Column(db.Integer)
-    complete = db.Column(db.Boolean)
+    complete = db.Column(db.Boolean, default=False)
 
 
 class User(db.Model, UserMixin): # create a new class to inherit from the UserMixin class
@@ -19,3 +19,4 @@ class User(db.Model, UserMixin): # create a new class to inherit from the UserMi
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note') # create a relationship between the user and the note table
     user_state = db.Column(db.String(150))
+    

@@ -9,8 +9,15 @@
 
     <div class="info-text">Points: {{ note.points }} // Complete: {{ note.complete }}</div>
 
+    {% if note.complete %}
+      <input type="checkbox" class="note-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
+    {% else %}
+      <input type="checkbox" class="note-not-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
+    {% endif %}
+
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
+
+    <span aria-hidden="true">&times;</span>
 
     </button>
   </li>
