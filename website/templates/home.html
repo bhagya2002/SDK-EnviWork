@@ -1,27 +1,33 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Tasks</h1>
+<h1 align="center">Tasks for {{ user.first_name }} <br>
+  <div id="maintitle"></div>
+</h1>
+
 <p align="right">Tasks completed: {{ user.total_points }}</p>  <!--change to add points when fixed-->
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <li class="list-group-item">
+    
+    <div class="note-container">
+      <div class="note-item">{{ note.data }}</div>
 
-    <div id="note">
-      <div class="note-text">{{ note.data }}</div>
-
+      <div class="note-item">
       {% if note.complete %}
-        <button class="btn btn-danger note-complete" onClick="addPoints({{ note.id }})">COMPLETE</button>
+        <button class="btn btn-success" onClick="addPoints({{ note.id }})">COMPLETE</button>
       {% else %}
-        <button class="btn btn-success note-not-complete" onClick="addPoints({{ note.id }})">INCOMPLETE</button>
+        <button class="btn btn-danger" onClick="addPoints({{ note.id }})">INCOMPLETE</button>
         <!-- deletePoints -->
       {% endif %}
+      </div>
 
-      <button type="button" class="close close-button" onClick="deleteNote({{ note.id }})">
+      <div class="note-item">
+        <button type="button" class="btn btn-secondary" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     </div>
 
-      <span aria-hidden="true">&times;</span>
-
-    </button>
   </li>
   {% endfor %}
 </ul>
@@ -32,4 +38,29 @@
     <button type="submit" class="btn btn-primary">Add Note</button>
   </div>
 </form>
+
+
+
+
+<!-- trying dont kill me -->
+<!-- entire quote container -->
+     <div id="quote-container">
+         <!--quote container-->
+        <div id="quote-l">
+            <!--quote-->
+            <blockquote id="quote-line">"Change your life today. Don't gamble on the future, act now, without delay."</blockquote>
+        </div>
+                 <!--author container-->
+        <div id="quote-a">
+            <!--author-->
+            <p id="quote-author">Simone de Beauvoir</p>
+        </div>
+        <!--gen quote button-->
+        <a onClick="genQuote();" class="waves-light btn btn-small quote-b">Generate a new Quote</a>
+    </div>
+
+<!--weather-->
+    <div class="weather">
+    <a class="weatherwidget-io" href="https://forecast7.com/en/53d54n113d49/edmonton/" data-label_1="EDMONTON" data-icons="Climacons Animated" data-days="3" data-theme="pure" data-shadow="rgba(151, 140, 140, 0.05)" data-accent="rgba(241, 28, 28, 0.02)" data-textcolor="#EF9A9A" data-highcolor="#EF9A9A" data-lowcolor="#EF9A9A" data-snowcolor="#000000" ></a>
+    </div>
 {% endblock %}

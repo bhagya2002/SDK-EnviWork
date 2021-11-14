@@ -4,25 +4,12 @@
     font-size: 12px;
 }
 
-#note div {
-    overflow: auto;
+.note-container div {
+    display: flex;
+    flex-direction: row;
 }
 
-.close-button {
-    width: 10%;
-}
-
-.note-not-complete {
-}
-
-.note-complete {
-}
-
-.note-complete, .note-not-complete {
-    padding: 6px;
-    width: 20%;
-}
-
-.note-text {
-    width: 70%;
+.note-item div {
+    width: 33.33%;
+    color: blue;
 }

@@ -66,7 +66,6 @@ def add_points():
     
     # if note exisits and made by the user who created the note, delete it
     user = User.query.get(note.user_id)
-    print(user, noteId)
     if note:
         if not note.complete and note.user_id == user.id:
             user.total_points += 1
