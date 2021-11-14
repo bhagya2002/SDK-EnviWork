@@ -58,6 +58,7 @@ def delete_notes():
 
 @routes.route('/add-points', methods=['POST'])
 def add_points():
+<<<<<<< HEAD
     print("add_points called")
     # takes json data form the request.data (note to be deleted)
     note = json.loads(request.data)
@@ -73,3 +74,6 @@ def add_points():
             flash('Note deleted.', 'success')
             
     return jsonify({})  # return empty json objec
+=======
+    pass
+>>>>>>> bd3de60ed7250fce3821223fa21bc8deb0ecfe9c

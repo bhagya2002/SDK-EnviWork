@@ -9,9 +9,10 @@
     <div style="float:left;">{{ note.data }}</div>
 
     {% if note.complete %}
-      <input style = "left-align" type="checkbox" class="note-complete" onClick="addPoints({{ note.id }})">  <!--change this to completed with points -->
+      <input style = "left-align" type="checkbox" class="note-complete" onClick="addPoints({{ note.id }})">
     {% else %}
-      <input type="checkbox" class="note-not-complete" onClick="addPoints({{ note.id }})">  
+      <input type="checkbox" class="note-not-complete" onClick="addPoints({{ note.id }})"> 
+      <!-- change -->
     {% endif %}
 
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">
