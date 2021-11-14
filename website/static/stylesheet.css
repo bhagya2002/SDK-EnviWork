@@ -5,11 +5,23 @@
 }
 
 .note-container div {
-    display: flex;
-    flex-direction: row;
+    justify-content: end;
 }
 
-.note-item div {
-    width: 33.33%;
-    color: blue;
+.note-data div {
+    width: 200px;
+    height: 100px;
+    /* flex-grow: 6; */
+}
+
+.note-complete div {
+    width: 100px;
+    height: 100px;
+    /* flex-grow: 1; */
+}
+
+.note-close div {
+    width: 100px;
+    height: 100px;
+    /* flex-grow: 1; */
 }

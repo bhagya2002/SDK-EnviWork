@@ -1,62 +1,64 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Tasks for {{ user.first_name }} <br>
-  <div id="maintitle"></div>
+<h1 align="center"><b>Tasks for {{ user.first_name }}</b><br>
 </h1>
+
+<h2 align="center">Welcome to your tasks for the day!</h2>
 
 <p align="right">Tasks completed: {{ user.total_points }}</p>  <!--change to add points when fixed-->
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <li class="list-group-item">
-    
+
     <div class="note-container">
-      <div class="note-item">{{ note.data }}</div>
+      <div class="note-data">{{ note.data }}</div>
 
-      <div class="note-item">
-      {% if note.complete %}
-        <button class="btn btn-success" onClick="addPoints({{ note.id }})">COMPLETE</button>
-      {% else %}
-        <button class="btn btn-danger" onClick="addPoints({{ note.id }})">INCOMPLETE</button>
-        <!-- deletePoints -->
-      {% endif %}
+      <div class="note-actions d-flex flex-row">
+        <div class="note-complete">
+          {% if note.complete %}
+            <button class="btn btn-success" onClick="addPoints({{ note.id }})">COMPLETE</button>
+          {% else %}
+            <button class="btn btn-danger" onClick="addPoints({{ note.id }})">INCOMPLETE</button>
+          {% endif %}
+        </div>
+
+        <div class="note-close">
+          <button type="button" class="btn btn-secondary" onClick="deleteNote({{ note.id }})">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       </div>
 
-      <div class="note-item">
-        <button type="button" class="btn btn-secondary" onClick="deleteNote({{ note.id }})">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
     </div>
 
   </li>
   {% endfor %}
 </ul>
+
 <form method="POST">
   <textarea name="note" id="note" class="form-control"></textarea>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+    <button type="submit" class="btn btn-primary">Add Task</button>
   </div>
 </form>
 
 
-
-
 <!-- trying dont kill me -->
 <!-- entire quote container -->
-     <div id="quote-container">
+     <div align="center" style="margin: 30px; padding: 10px" mid="quote-container">
          <!--quote container-->
         <div id="quote-l">
             <!--quote-->
             <blockquote id="quote-line">"Change your life today. Don't gamble on the future, act now, without delay."</blockquote>
         </div>
                  <!--author container-->
-        <div id="quote-a">
+        <div  id="quote-a">
             <!--author-->
-            <p id="quote-author">Simone de Beauvoir</p>
+            <p id="quote-line" id="quote-author">Simone de Beauvoir</p>
         </div>
         <!--gen quote button-->
-        <a onClick="genQuote();" class="waves-light btn btn-small quote-b">Generate a new Quote</a>
+        <a style="color: white;" onClick="genQuote();" class="waves-light btn btn-primary btn-sm quote-b">Generate a new Quote</a>
     </div>
 
 <!--weather-->
