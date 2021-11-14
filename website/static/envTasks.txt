@@ -1,0 +1,1 @@
+[{"health":"go walk for 30 minutes"},{"environment":"bike to work today"},{"environment":"car pool with someone today"},{"health":"make a meal plan for the day and follow through"}]

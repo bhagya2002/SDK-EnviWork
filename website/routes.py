@@ -13,13 +13,13 @@ routes = Blueprint('routes', __name__)
 @login_required
 def home():
     if current_user.user_state == 'new':
-        new_note = Note(data="Walk, bike, or take the bus somewhere instead of driving", user_id=current_user.id)
+        new_note = Note(data="Walk, bike, or take the bus somewhere instead of driving", user_id=current_user.id, points=3)
         db.session.add(new_note)
-        new_note = Note(data="Make sure all recyclables for the day go in the recycling", user_id=current_user.id)
+        new_note = Note(data="Make sure all recyclables for the day go in the recycling", user_id=current_user.id, points=2)
         db.session.add(new_note)
-        new_note = Note(data="Pick up litter", user_id=current_user.id)
+        new_note = Note(data="Pick up litter", user_id=current_user.id, points=1)
         db.session.add(new_note)
-        new_note = Note(data="Make sure all lights and energy-using devices (within reason) are off before you go to sleep", user_id=current_user.id)
+        new_note = Note(data="Make sure all lights and energy-using devices (within reason) are off before you go to sleep", user_id=current_user.id, points=1)
         db.session.add(new_note)
         db.session.commit()
         current_user.user_state = 'old'
@@ -27,11 +27,13 @@ def home():
     
     if request.method == 'POST':
         note = request.form.get('note')
+        points = request.form.get('points')
+        print(points)
         
         if len(note) < 1:
             flash('Note is too short.', 'error')
         else:
-            new_note = Note(data=note, user_id=current_user.id)
+            new_note = Note(data=note, user_id=current_user.id, points=points)
             db.session.add(new_note)
             db.session.commit()
             flash('Note added.', 'success')
@@ -68,12 +70,12 @@ def add_points():
     user = User.query.get(note.user_id)
     if note:
         if not note.complete and note.user_id == user.id:
-            user.total_points += 1
+            user.total_points += note.points
             note.complete = True
             db.session.commit()
             flash('Points added.', 'success')
         elif note.complete and note.user_id == user.id:
-            user.total_points -= 1
+            user.total_points -= note.points
             note.complete = False
             db.session.commit()
             flash('Points removed.', 'success')

@@ -17,25 +17,20 @@ function addPoints(noteId) {
 }
 
 // task generator
-let quotes, quote, quoteauthor;
+let tasks, task;
 let randNum;
 
 // Load JSON file into quotes
-fetch("quotes.txt")
-  .then((response) => response.json())
-  .then((data) => { quotes = JSON.parse(data); });
-	// .then((rawData) => rawData.text())
-	// .then((data) => quotes = JSON.parse(data));
+fetch("envTasks.txt")
+	.then((rawData) => rawData.text())
+  .then((data) => { tasks = Jsonify(data); });
+
 
 function genQuote() {
-  console.log("wrking here too")
 	lastIndex = randNum;
-	randNum = Math.floor(Math.random() * quotes.length + 1); // Generate a Random Quote from the list
-	quote = quotes[randNum].inspire; // Gets the line of Quote
-	quoteauthor = quotes[randNum].author; // Gets the author of Quote
-  console.log("wrking here too")
-	document.getElementById("quote-line").innerHTML = '"' + quote + '"';
-	document.getElementById("quote-author").innerHTML = "- " + quoteauthor;
+	randNum = Math.floor(Math.random() * tasks.length + 1); // Generate a Random Quote from the list
+	task = tasks[randNum].inspire; // Gets the line of Quote
+	document.getElementById("task-line").innerHTML = '"' + task + '"';
 }
 
 // weather widget

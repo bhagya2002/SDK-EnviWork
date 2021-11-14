@@ -1,27 +1,32 @@
-.info-text {
-    color: gray;
-    text-align: right;
-    font-size: 12px;
-}
-
-.note-container div {
-    justify-content: end;
+.note-container {
+    justify-content: space-between;
 }
 
 .note-data div {
     width: 200px;
-    height: 100px;
-    /* flex-grow: 6; */
+    height: 20px;
+    text-align: center;
+}
+
+.note-points {
+    color: rgb(142, 142, 142);
+    font-size: 12px;
+    width: 100px;
+    height: 20px;
 }
 
 .note-complete div {
     width: 100px;
-    height: 100px;
-    /* flex-grow: 1; */
+    height: 20px;
+    padding: 5px;
 }
 
 .note-close div {
     width: 100px;
-    height: 100px;
-    /* flex-grow: 1; */
+    height: 20px;
+    padding: 5px;
+}
+
+.note-score {
+    margin-top: 0.05rem;
 }

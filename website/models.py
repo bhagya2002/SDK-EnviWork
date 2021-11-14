@@ -8,7 +8,7 @@ class Note(db.Model):
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key to user table to get the user id of who made the note
-    points = db.Column(db.Integer)
+    points = db.Column(db.Integer, default=1)
     complete = db.Column(db.Boolean, default=False)
 
 
