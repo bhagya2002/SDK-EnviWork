@@ -18,3 +18,4 @@ class User(db.Model, UserMixin): # create a new class to inherit from the UserMi
     password = db.Column(db.String(150), nullable=False) # create a new column called password with type String and has to be filled
     first_name = db.Column(db.String(150))
     notes = db.relationship('Note') # create a relationship between the user and the note table
+    user_state = db.Column(db.String(150))

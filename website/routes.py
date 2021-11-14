@@ -12,6 +12,17 @@ routes = Blueprint('routes', __name__)
 @routes.route('/', methods=['GET', "POST"])
 @login_required
 def home():
+    if current_user.user_state == 'new':
+        new_note = Note(data="How are you doing?", user_id=current_user.id)
+        db.session.add(new_note)
+        new_note = Note(data="How are you doing today?", user_id=current_user.id)
+        db.session.add(new_note)
+        new_note = Note(data="How were you doing yesterday?", user_id=current_user.id)
+        db.session.add(new_note)
+        new_note = Note(data="Day before?", user_id=current_user.id)
+        db.session.add(new_note)
+        db.session.commit()
+    
     if request.method == 'POST':
         note = request.form.get('note')
         
