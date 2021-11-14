@@ -1,9 +1,15 @@
-# Steps to run the program
+# Sustainability Squad
+
+## Steps to run the program
 
 1. run the following in terminal to install the neeeded packages:
-```pip3 install flask flask-login flask-sqlalachemy```
+```
+pip3 install flask flask-login flask-sqlalachemy
+```
 2. To start the program run:
-```python3 main.py```
+```
+python3 main.py
+```
 
 ## Information and background in flask
 
