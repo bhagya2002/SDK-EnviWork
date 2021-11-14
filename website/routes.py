@@ -58,3 +58,4 @@ def delete_notes():
 
 @routes.route('/add-points', methods=['POST'])
 def add_points():
+    pass

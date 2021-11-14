@@ -12,7 +12,7 @@
     {% if note.complete %}
       <input type="checkbox" class="note-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
     {% else %}
-      <input type="checkbox" class="note-not-complete" onClick="deleteNote({{ note.id }})">  <!--change this to completed with points -->
+      <input type="checkbox" class="note-not-complete" onClick="addPoints({{ note.id }})">  <!--change this to completed with points -->
     {% endif %}
 
     <button type="button" class="close" onClick="deleteNote({{ note.id }})">
