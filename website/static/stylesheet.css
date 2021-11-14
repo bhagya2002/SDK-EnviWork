@@ -4,14 +4,25 @@
     font-size: 12px;
 }
 
+#note div {
+    overflow: auto;
+}
+
+.close-button {
+    width: 10%;
+}
+
 .note-not-complete {
-    background-color: grey;
 }
 
 .note-complete {
-    background-color: black;
 }
 
 .note-complete, .note-not-complete {
     padding: 6px;
+    width: 20%;
+}
+
+.note-text {
+    width: 70%;
 }

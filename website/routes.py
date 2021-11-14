@@ -1,12 +1,12 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, User
 from . import db
 import json
 
 # creates a blueprint object of all the routes on the website
 routes = Blueprint('routes', __name__)
-
+#current_points = db.session
 
 # ('/') defines the root route after the url
 @routes.route('/', methods=['GET', "POST"])
@@ -58,7 +58,6 @@ def delete_notes():
 
 @routes.route('/add-points', methods=['POST'])
 def add_points():
-<<<<<<< HEAD
     print("add_points called")
     # takes json data form the request.data (note to be deleted)
     note = json.loads(request.data)
@@ -66,14 +65,18 @@ def add_points():
     note = Note.query.get(noteId)  # check if note exists
     
     # if note exisits and made by the user who created the note, delete it
+    user = User.query.get(note.user_id)
+    print(user, noteId)
     if note:
-        if note.user_id == current_user.id:
-            current_user.total_points += 1
-            db.session.delete(note)
+        if not note.complete and note.user_id == user.id:
+            user.total_points += 1
+            note.complete = True
             db.session.commit()
-            flash('Note deleted.', 'success')
+            flash('Points added.', 'success')
+        elif note.complete and note.user_id == user.id:
+            user.total_points -= 1
+            note.complete = False
+            db.session.commit()
+            flash('Points removed.', 'success')
             
-    return jsonify({})  # return empty json objec
-=======
-    pass
->>>>>>> bd3de60ed7250fce3821223fa21bc8deb0ecfe9c
+    return render_template("home.html", user=current_user)
