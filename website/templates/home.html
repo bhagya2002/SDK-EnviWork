@@ -4,9 +4,15 @@
 <ul class="list-group list-group-flush" id="notes">
   {% for note in user.notes %}
   <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+
+    <div style="float:left;">{{ note.data }}</div>
+
+    <div style="float:center; color:gray; text-align:right; font-size:12px;">
+      Points: {{ note.points }} // Complete: {{ note.complete }}</div>
+
+    <div style="float:right;"><button type="button" class="close" onClick="deleteNote({{ note.id }})"></div>
       <span aria-hidden="true">&times;</span>
+
     </button>
   </li>
   {% endfor %}

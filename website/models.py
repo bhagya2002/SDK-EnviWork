@@ -8,6 +8,9 @@ class Note(db.Model):
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # foreign key to user table to get the user id of who made the note
+    points = db.Column(db.Integer)
+    complete = db.Column(db.Boolean)
+
 
 class User(db.Model, UserMixin): # create a new class to inherit from the UserMixin class
     id = db.Column(db.Integer, primary_key=True) # create a new column called id with type Integer and primary key

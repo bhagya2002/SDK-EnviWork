@@ -27,10 +27,7 @@ def home():
 
 
 @routes.route('/delete-notes', methods=['POST'])
-def delete_notes():
-    # takes json data form the request.data (note to be deleted)
-    note = json.load(request.data)
-    noteId = note['noteId']  # noteId is the id of the note to be deleted
+def delete_notes(noteId):
     note = Note.query.get(noteId)  # check if note exists
     
     # if note exisits and made by the user who created the note, delete it
