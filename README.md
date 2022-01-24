@@ -1,4 +1,26 @@
-# Sustainability Squad
+# SDG Task List
+
+A project by Sustainability Squad for HackED Beta 2021.
+
+We wanted to create a simple task list geared towards environmentally friendly tasks, to encourage individual responsibility and awareness about climate change through basic gamification.
+
+## Functionality
+
+Current functionalities are:
+* Sign-up/log-in system with password hashing
+* Functional task list with complete and incomplete buttons that give the user points
+* Functionality to delete tasks
+* Weather widget display
+* Example task display (not finished; intended to generate sample tasks that could be automatically added to the list)
+
+What's next for SDG task list:
+* Implementing generation of more environmentally friendly tasks for long-term use.
+* To make it more gamified and usable over the long term, we want to make tasks reset over a period of time. We planned out the implementation of this feature but ran out of time.
+
+## Accomplishments we're proud of
+
+* Quickly became familiar with Flask (relatively new to all of us), HTML, and CSS (relatively new to most of us).
+* Created a working project on a tight timeframe.
 
 ## Inspiration
 We wanted to create a simple task list geared towards environmentally friendly tasks, to encourage individual responsibility and awareness about climate change through basic gamification.
